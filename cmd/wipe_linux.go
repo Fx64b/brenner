@@ -14,9 +14,9 @@ import (
 // Block-device ioctls. blkDiscard/blkZeroout take a [2]uint64{start, length} in
 // bytes; blkRRPart takes no argument.
 const (
-	blkDiscard = 0x1277 // BLKDISCARD — _IO(0x12, 119)
-	blkZeroout = 0x127f // BLKZEROOUT — _IO(0x12, 127)
-	blkRRPart  = 0x125f // BLKRRPART  — _IO(0x12, 95)
+	blkDiscard = 0x1277 // BLKDISCARD - _IO(0x12, 119)
+	blkZeroout = 0x127f // BLKZEROOUT - _IO(0x12, 127)
+	blkRRPart  = 0x125f // BLKRRPART  - _IO(0x12, 95)
 )
 
 // quickWipe destroys the partition table and filesystem signatures as fast as
@@ -35,9 +35,9 @@ func quickWipe(f *os.File, size uint64, report func(flash.Progress)) (string, er
 	_, _, _ = unix.Syscall(unix.SYS_IOCTL, fd, blkRRPart, 0)
 
 	if discarded {
-		return "quick — discarded (TRIM)", nil
+		return "quick - discarded (TRIM)", nil
 	}
-	return "quick — signatures cleared", nil
+	return "quick - signatures cleared", nil
 }
 
 func blkRangeIoctl(fd, req uintptr, start, length uint64) error {
@@ -51,12 +51,12 @@ func blkRangeIoctl(fd, req uintptr, start, length uint64) error {
 // fastWipe clears a device as quickly as the hardware allows, returning the
 // method used:
 //
-//  1. BLKDISCARD the whole device — near-instant when the controller supports
+//  1. BLKDISCARD the whole device - near-instant when the controller supports
 //     TRIM/discard (common on SSDs and USB3 sticks), which is the big win over a
 //     full zero-fill.
-//  2. BLKZEROOUT in chunks — hardware-accelerated zeroing where available, else
+//  2. BLKZEROOUT in chunks - hardware-accelerated zeroing where available, else
 //     an efficient in-kernel zero-fill, with progress per chunk.
-//  3. A portable streamed zero-fill — only reached for plain files (e.g. .img
+//  3. A portable streamed zero-fill - only reached for plain files (e.g. .img
 //     targets) where the ioctls don't apply.
 func fastWipe(f *os.File, size uint64, report func(flash.Progress)) (string, error) {
 	fd := f.Fd()

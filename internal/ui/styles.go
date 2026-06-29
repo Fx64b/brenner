@@ -10,7 +10,7 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
-// The ember palette — warm oranges and reds evoking a burner at work.
+// The ember palette - warm oranges and reds evoking a burner at work.
 var (
 	ember = lipgloss.Color("#FF7A18")
 	flame = lipgloss.Color("#FF3D2E")
@@ -37,7 +37,7 @@ var (
 // Banner returns the Brenner wordmark and tagline.
 func Banner() string {
 	logo := lipgloss.NewStyle().Bold(true).Foreground(ember).Render("🔥 brenner")
-	tag := SubtitleStyle.Italic(true).Render("burn ISOs to USB — like music to a CD")
+	tag := SubtitleStyle.Italic(true).Render("burn ISOs to USB - like music to a CD")
 	return lipgloss.JoinVertical(lipgloss.Left, logo, tag)
 }
 

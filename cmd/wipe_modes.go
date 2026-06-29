@@ -11,7 +11,7 @@ import (
 
 // quickWipeRegion is zeroed at each end of the device for a quick wipe. 8 MiB
 // comfortably covers the MBR, the primary GPT (header + entries), most
-// filesystem superblocks, and — at the tail — the backup GPT.
+// filesystem superblocks, and - at the tail - the backup GPT.
 const quickWipeRegion = 8 << 20
 
 // wipeByMode dispatches to the chosen wipe strategy and returns a short

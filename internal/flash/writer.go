@@ -123,8 +123,8 @@ func Overwrite(dst io.Writer, size uint64, blockSize int, fill func([]byte) erro
 
 // Verify hashes the full source and the first size bytes read back from the
 // device, reporting whether they match. size should be the byte count returned
-// by Copy. progress (if non-nil) is reported as the device — the slow part on a
-// USB stick — is read back.
+// by Copy. progress (if non-nil) is reported as the device - the slow part on a
+// USB stick - is read back.
 func Verify(device io.Reader, source io.Reader, size uint64, progress func(Progress)) (bool, error) {
 	sourceSum := sha256.New()
 	if _, err := io.Copy(sourceSum, source); err != nil {

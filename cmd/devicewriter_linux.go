@@ -11,7 +11,7 @@ import (
 
 // deviceWriter wraps a block-device file and kicks off asynchronous writeback
 // for every range it writes (sync_file_range). This keeps dirty pages bounded
-// instead of letting gigabytes pile up in the page cache — which is what makes a
+// instead of letting gigabytes pile up in the page cache - which is what makes a
 // USB write appear to fly to 100% and then stall for minutes on the final fsync
 // (and often freezes the rest of the desktop). The writeback is non-blocking, so
 // it costs nothing on the hot path.

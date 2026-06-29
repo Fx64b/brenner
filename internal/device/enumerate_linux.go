@@ -97,8 +97,8 @@ func (e *linuxEnumerator) Unmount(path string) error {
 // busy→lazy retry can be exercised in tests without root.
 var unmountSyscall = syscall.Unmount
 
-// unmountOne unmounts a single mountpoint. If a plain unmount fails — typically
-// EBUSY because a process still holds the filesystem open — it falls back to a
+// unmountOne unmounts a single mountpoint. If a plain unmount fails - typically
+// EBUSY because a process still holds the filesystem open - it falls back to a
 // lazy MNT_DETACH unmount. The user has already agreed to overwrite the whole
 // device, so the filesystem just needs to be detached from the directory tree
 // before we write; lazy detach does exactly that even when the mount is busy.

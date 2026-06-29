@@ -104,7 +104,7 @@ func TestNormalizeWipeMode(t *testing.T) {
 
 func TestDeviceLabel(t *testing.T) {
 	d := device.Device{Path: "/dev/sdb", Model: "Samsung Flash Drive", Size: 8_000_000_000}
-	want := "[8.0 GB]  /dev/sdb — Samsung Flash Drive"
+	want := "[8.0 GB]  /dev/sdb - Samsung Flash Drive"
 	if got := DeviceLabel(d); got != want {
 		t.Errorf("DeviceLabel = %q, want %q", got, want)
 	}
@@ -112,7 +112,7 @@ func TestDeviceLabel(t *testing.T) {
 
 func TestDeviceLabelFallsBackToLabel(t *testing.T) {
 	d := device.Device{Path: "/dev/sdc", Label: "KINGSTON", Size: 16_000_000_000}
-	want := "[16.0 GB]  /dev/sdc — KINGSTON"
+	want := "[16.0 GB]  /dev/sdc - KINGSTON"
 	if got := DeviceLabel(d); got != want {
 		t.Errorf("DeviceLabel = %q, want %q", got, want)
 	}

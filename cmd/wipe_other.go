@@ -20,5 +20,5 @@ func quickWipe(f *os.File, size uint64, report func(flash.Progress)) (string, er
 	if err := quickWipeCore(f, size, report); err != nil {
 		return "", err
 	}
-	return "quick — signatures cleared", nil
+	return "quick - signatures cleared", nil
 }

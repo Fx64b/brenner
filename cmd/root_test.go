@@ -23,7 +23,7 @@ func TestShouldWarnRoot(t *testing.T) {
 
 func TestBuildVersion(t *testing.T) {
 	// Without ldflags injection, buildVersion falls back to the module version or
-	// "dev" — but never an empty string.
+	// "dev" - but never an empty string.
 	if got := buildVersion(); got == "" {
 		t.Error("buildVersion() returned an empty string")
 	}

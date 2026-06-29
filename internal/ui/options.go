@@ -9,9 +9,9 @@ import (
 )
 
 // DeviceLabel formats a device for a select list, e.g.
-// "[8.0 GB]  /dev/sdb — Samsung Flash Drive".
+// "[8.0 GB]  /dev/sdb - Samsung Flash Drive".
 func DeviceLabel(d device.Device) string {
-	return fmt.Sprintf("[%s]  %s — %s", device.HumanSize(d.Size), d.Path, d.Title())
+	return fmt.Sprintf("[%s]  %s - %s", device.HumanSize(d.Size), d.Path, d.Title())
 }
 
 func deviceOptions(devices []device.Device) []huh.Option[string] {

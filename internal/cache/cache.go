@@ -1,5 +1,5 @@
 // Package cache manages the per-user ISO store at ~/.brenner. It is deliberately
-// a plain directory of .iso files — no database — so it stays inspectable and
+// a plain directory of .iso files - no database - so it stays inspectable and
 // trivially testable.
 package cache
 

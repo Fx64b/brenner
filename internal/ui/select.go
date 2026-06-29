@@ -70,9 +70,9 @@ func SelectWipeMode(devicePath string) (string, error) {
 	field := huh.NewSelect[string]().
 		Title("How should "+devicePath+" be wiped?").
 		Options(
-			huh.NewOption("Quick — clear partition table & signatures · ~1s · data still recoverable", WipeQuick),
-			huh.NewOption("Full — zero-fill every byte · slow · gone by normal means", WipeZero),
-			huh.NewOption("Secure — random overwrite · slowest · limited benefit on flash", WipeSecure),
+			huh.NewOption("Quick - clear partition table & signatures · ~1s · data still recoverable", WipeQuick),
+			huh.NewOption("Full - zero-fill every byte · slow · gone by normal means", WipeZero),
+			huh.NewOption("Secure - random overwrite · slowest · limited benefit on flash", WipeSecure),
 		).
 		Value(&mode)
 	if err := run(field); err != nil {

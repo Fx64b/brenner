@@ -26,7 +26,7 @@ func RenderDeviceTable(devices []device.Device) string {
 	for _, d := range devices {
 		label := d.Label
 		if label == "" {
-			label = "—"
+			label = "-"
 		}
 		t.Row(d.Path, device.HumanSize(d.Size), d.Title(), label)
 	}

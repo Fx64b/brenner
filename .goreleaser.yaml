@@ -1,4 +1,4 @@
-# GoReleaser configuration — https://goreleaser.com
+# GoReleaser configuration - https://goreleaser.com
 version: 2
 
 project_name: brenner
@@ -45,10 +45,10 @@ changelog:
   sort: asc
   filters:
     exclude:
-      - '^docs:'
-      - '^test:'
-      - '^chore:'
-      - '^ci:'
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "^ci:"
 
 release:
   draft: false

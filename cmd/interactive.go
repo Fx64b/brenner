@@ -98,7 +98,7 @@ func interactiveWipe(enum device.Enumerator, dev device.Device) error {
 	}
 	fmt.Println(ui.Step("Mode", ui.WipeModeLabel(mode)))
 
-	prompt := fmt.Sprintf("Wipe %s (%s) — %s?  This DESTROYS all data on the device.",
+	prompt := fmt.Sprintf("Wipe %s (%s) - %s?  This DESTROYS all data on the device.",
 		dev.Path, device.HumanSize(dev.Size), ui.WipeModeLabel(mode))
 	ok, err := ui.Confirm(ui.WarnStyle.Render(prompt), "Yes, wipe it", "Cancel")
 	if err != nil {

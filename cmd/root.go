@@ -45,7 +45,7 @@ var rootCmd = &cobra.Command{
 	Use:   "brenner",
 	Short: "Burn ISO images onto USB drives from your terminal",
 	Long: ui.Banner() + "\n\n" +
-		"Brenner flashes ISO images onto USB drives and wipes them — a fast,\n" +
+		"Brenner flashes ISO images onto USB drives and wipes them - a fast,\n" +
 		"native, terminal-first alternative to heavyweight GUI burners.\n\n" +
 		"Run with no arguments for an interactive flow, or use the flags on\n" +
 		"`flash`/`wipe` to script it.",
@@ -72,7 +72,7 @@ func warnIfRoot() {
 	}
 	fmt.Fprintln(os.Stderr,
 		ui.WarnStyle.Render("Warning: running Brenner as root is not recommended.")+"\n   "+
-			ui.SubtitleStyle.Render("Run it as your normal user — Brenner asks for sudo only when it needs to write."))
+			ui.SubtitleStyle.Render("Run it as your normal user - Brenner asks for sudo only when it needs to write."))
 }
 
 // Execute runs the root command and handles top-level error reporting.

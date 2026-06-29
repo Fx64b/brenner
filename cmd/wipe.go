@@ -19,7 +19,7 @@ var wipeCmd = &cobra.Command{
 	Short: "Erase a device",
 	Long: "Erase a device using one of three modes:\n\n" +
 		"  quick   destroy the partition table + filesystem signatures (~1s,\n" +
-		"          data remains recoverable) — the default\n" +
+		"          data remains recoverable) - the default\n" +
 		"  zero    overwrite every byte with 0x00 (slow, thorough)\n" +
 		"  secure  overwrite with random data (slowest; limited benefit on flash\n" +
 		"          due to wear-leveling)\n\n" +
@@ -53,7 +53,7 @@ func runWipe(cmd *cobra.Command, _ []string) error {
 	}
 
 	if !wipeYes {
-		ok, err := confirmTTY(fmt.Sprintf("Wipe %s (%s) — %s? This DESTROYS all data. [y/N] ",
+		ok, err := confirmTTY(fmt.Sprintf("Wipe %s (%s) - %s? This DESTROYS all data. [y/N] ",
 			wipeDevice, device.HumanSize(size), ui.WipeModeLabel(mode)))
 		if err != nil {
 			return err

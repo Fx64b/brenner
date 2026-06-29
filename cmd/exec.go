@@ -80,7 +80,7 @@ func doFlash(enum device.Enumerator, devicePath, isoPath string, size uint64, ve
 		fmt.Println(ui.OkStyle.Render("Verified OK."))
 	}
 
-	fmt.Println(ui.OkStyle.Render(fmt.Sprintf("✓ Done — %s burned to %s. Safe to remove the drive.",
+	fmt.Println(ui.OkStyle.Render(fmt.Sprintf("✓ Done - %s burned to %s. Safe to remove the drive.",
 		filepath.Base(isoPath), devicePath)))
 	return nil
 }
@@ -120,7 +120,7 @@ func doWipe(enum device.Enumerator, devicePath string, size uint64, mode string)
 	}
 	fmt.Println(ui.OkStyle.Render("Wipe complete (" + method + ")."))
 	if mode == ui.WipeQuick {
-		fmt.Println(ui.SubtitleStyle.Render("The drive is reusable now; file data may still be recoverable — use --mode zero or secure to overwrite it."))
+		fmt.Println(ui.SubtitleStyle.Render("The drive is reusable now; file data may still be recoverable - use --mode zero or secure to overwrite it."))
 	}
 	return nil
 }
@@ -149,9 +149,9 @@ func ensureWritable(path string, requireRoot bool) error {
 	isBlockDevice := info.Mode()&os.ModeDevice != 0
 	if isBlockDevice && requireRoot && os.Geteuid() != 0 {
 		if runtime.GOOS == "windows" {
-			return fmt.Errorf("writing to %s requires Administrator — re-run from an elevated prompt", path)
+			return fmt.Errorf("writing to %s requires Administrator - re-run from an elevated prompt", path)
 		}
-		return fmt.Errorf("writing to %s requires root — re-run with sudo", path)
+		return fmt.Errorf("writing to %s requires root - re-run with sudo", path)
 	}
 	return nil
 }
@@ -195,14 +195,14 @@ func elevateIfNeeded(devicePath string, childArgs []string) (handled bool, err e
 
 	sudo, lookErr := sudoLookPath()
 	if lookErr != nil {
-		return true, fmt.Errorf("writing to %s requires root, but sudo was not found — re-run as root", devicePath)
+		return true, fmt.Errorf("writing to %s requires root, but sudo was not found - re-run as root", devicePath)
 	}
 	self, exeErr := os.Executable()
 	if exeErr != nil {
 		return true, exeErr
 	}
 
-	fmt.Println(ui.SubtitleStyle.Render("Root required to write to " + devicePath + " — you may be prompted for your password."))
+	fmt.Println(ui.SubtitleStyle.Render("Root required to write to " + devicePath + " - you may be prompted for your password."))
 
 	// --elevated marks the child so it skips the "don't run as root" warning.
 	args := append([]string{self}, childArgs...)
