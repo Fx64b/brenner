@@ -1,0 +1,10 @@
+# Compiled binary
+/brenner
+
+# GoReleaser output
+/dist/
+
+# Test artifacts
+*.img
+*.out
+coverage.out

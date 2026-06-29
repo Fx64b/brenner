@@ -1,0 +1,55 @@
+# GoReleaser configuration — https://goreleaser.com
+version: 2
+
+project_name: brenner
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: brenner
+    main: .
+    binary: brenner
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
+      - -X github.com/fx64b/brenner/cmd.version={{ .Version }}
+      - -X github.com/fx64b/brenner/cmd.commit={{ .Commit }}
+      - -X github.com/fx64b/brenner/cmd.date={{ .Date }}
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: brenner
+    formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  use: github
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+      - '^ci:'
+
+release:
+  draft: false
+  prerelease: auto
